@@ -2,6 +2,9 @@ import './style.css'
 
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import phillImg from './assets/me.jpeg'
+import spaceImg from './assets/bg.png'
+import earthImg from './assets/earth.jpg'
 
 // ! scene ========================
 const scene = new THREE.Scene();
@@ -18,7 +21,7 @@ const renderer = new THREE.WebGL1Renderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-camera.position.setZ(30);
+camera.position.setZ(0);
 
 renderer.render( scene, camera )
 
@@ -38,13 +41,13 @@ const ambientLight = new THREE.AmbientLight(0xffffff)
 scene.add(pointLight, ambientLight)
 
 // ? light location helper
-const lightHelper = new THREE.PointLightHelper(pointLight)
+// const lightHelper = new THREE.PointLightHelper(pointLight)
 // ? grid helper
-const gridHelper = new THREE.GridHelper(200, 50, 0x44bb47);
-scene.add(lightHelper, gridHelper)
+// const gridHelper = new THREE.GridHelper(200, 50, 0x44bb47);
+// scene.add(lightHelper, gridHelper)
 
-// ! orbit controls (allows mouse perspective drag)
-const controls = new OrbitControls(camera, renderer.domElement)
+// ! orbit controls (allows perspective control)
+// const controls = new OrbitControls(camera, renderer.domElement)
 
 // ! stars ===============================
 const addStar = () => {
@@ -60,12 +63,12 @@ const addStar = () => {
 Array(200).fill().forEach(addStar)
 
 // ! space texture ========================
-const spaceTexture = new THREE.TextureLoader().load('assets/spaceText.png')
+const spaceTexture = new THREE.TextureLoader().load(spaceImg)
 scene.background = spaceTexture
 
 
 // ! avatar cube ==========================
-const phillTexture = new THREE.TextureLoader().load('assets/meAndMo.jpeg')
+const phillTexture = new THREE.TextureLoader().load(phillImg)
 
 const phillCube = new THREE.Mesh(
   new THREE.BoxGeometry(2,2,2),
@@ -77,11 +80,11 @@ scene.add(phillCube)
 
 
 // ! earth sphere =========================
-const earthTexture = new THREE.TextureLoader().load('assets/earthTextMap.png')
+// const earthTexture = new THREE.TextureLoader().load(earthImg)
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshStandardMaterial({ map: earthTexture })
+  new THREE.MeshBasicMaterial({ color: 0xb55b55, wireframe: true })
 )
 
 scene.add(earth)
@@ -89,11 +92,11 @@ scene.add(earth)
 
 
 // ! position objects ======================
-phillCube.position.z = -5;
+phillCube.position.z = -4;
 phillCube.position.x = 2;
 
 earth.position.z = 10;
-earth.position.x = -10;
+earth.position.x = -5;
 
 
 // ! camera movement on scroll =============
