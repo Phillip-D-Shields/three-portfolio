@@ -3,8 +3,9 @@ import './style.css'
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import phillImg from './assets/me.jpeg'
-import spaceImg from './assets/bg.png'
-import earthImg from './assets/earth.jpg'
+// import spaceImg from './assets/bg.png'
+// import earthImg from './assets/earth.jpg'
+import marsImg from './assets/mars.jpg'
 
 // ! scene ========================
 const scene = new THREE.Scene();
@@ -26,7 +27,7 @@ camera.position.setZ(0);
 renderer.render( scene, camera )
 
 // ! torus shape object ==============
-const geometry = new THREE.TorusGeometry(100, 20, 120, 100)
+const geometry = new THREE.TorusKnotGeometry(10, 4, 40, 10, 2, 3)
 const material = new THREE.MeshBasicMaterial({color: 0x44bb47, wireframe: true});
 const torus = new THREE.Mesh( geometry, material )
 
@@ -34,11 +35,11 @@ scene.add(torus);
 
 
 // ! lighting =========================
-const pointLight = new THREE.PointLight(0xffffff)
-pointLight.position.set(5,5,5)
+// const pointLight = new THREE.PointLight(0xffffff)
+// pointLight.position.set(5,5,5)
 
 const ambientLight = new THREE.AmbientLight(0xffffff)
-scene.add(pointLight, ambientLight)
+scene.add(ambientLight)
 
 // ? light location helper
 // const lightHelper = new THREE.PointLightHelper(pointLight)
@@ -47,11 +48,11 @@ scene.add(pointLight, ambientLight)
 // scene.add(lightHelper, gridHelper)
 
 // ! orbit controls (allows perspective control)
-// const controls = new OrbitControls(camera, renderer.domElement)
+const controls = new OrbitControls(camera, renderer.domElement)
 
 // ! stars ===============================
 const addStar = () => {
-  const geometry = new THREE.SphereGeometry(0.25, 20, 20)
+  const geometry = new THREE.SphereGeometry(0.05, 2, 2)
   const material = new THREE.MeshStandardMaterial({ color: 0x99DDEB })
   const star = new THREE.Mesh( geometry, material )
 
@@ -60,18 +61,18 @@ const addStar = () => {
   scene.add(star)
 }
 
-Array(200).fill().forEach(addStar)
+Array(500).fill().forEach(addStar)
 
 // ! space texture ========================
-const spaceTexture = new THREE.TextureLoader().load(spaceImg)
-scene.background = spaceTexture
+// const spaceTexture = new THREE.TextureLoader().load(spaceImg)
+// scene.background = spaceTexture
 
 
 // ! avatar cube ==========================
 const phillTexture = new THREE.TextureLoader().load(phillImg)
 
 const phillCube = new THREE.Mesh(
-  new THREE.BoxGeometry(2,2,2),
+  new THREE.PlaneGeometry(3,3),
   new THREE.MeshBasicMaterial({ map: phillTexture })
 )
 
@@ -80,14 +81,14 @@ scene.add(phillCube)
 
 
 // ! earth sphere =========================
-// const earthTexture = new THREE.TextureLoader().load(earthImg)
+const marsTexture = new THREE.TextureLoader().load(marsImg)
 
-const earth = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshBasicMaterial({ color: 0xb55b55, wireframe: true })
+const mars = new THREE.Mesh(
+  new THREE.SphereGeometry(30, 32, 32),
+  new THREE.MeshBasicMaterial({ map: marsTexture })
 )
 
-scene.add(earth)
+scene.add(mars)
 
 
 
@@ -95,8 +96,8 @@ scene.add(earth)
 phillCube.position.z = -4;
 phillCube.position.x = 2;
 
-earth.position.z = 10;
-earth.position.x = -5;
+mars.position.z = 20;
+mars.position.x = -45;
 
 
 // ! camera movement on scroll =============
@@ -104,16 +105,21 @@ const moveCamera = () => {
 
   const top = document.body.getBoundingClientRect().top;
 
-  earth.rotateX(0.05)
-  earth.rotateY(0.075)
-  earth.rotateZ(0.05)
+  // earth.rotateX(0.05)
+  // earth.rotateY(0.075)
+  // earth.rotateZ(0.05)
+
+  torus.position.x -= 0.1
+  torus.position.y -= 0.1
+
 
   phillCube.rotateY(0.01)
+  phillCube.rotateX(0.01)
   phillCube.rotateZ(0.01)
 
   camera.position.z = top * -0.01
-  camera.position.x = top * -0.0002
-  camera.position.y = top * -0.0002
+  camera.position.x = top * -0.002
+  camera.position.y = top * -0.002
 
 }
 
@@ -126,11 +132,13 @@ function animate() {
   requestAnimationFrame(animate);
 
   torus.rotation.x += 0.001;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.0005;
+  torus.rotation.y += 0.001;
+  // torus.rotation.z += 0.0005;
 
-  // moon.rotation.x += 0.005;
+  mars.rotation.y += 0.0005;
 
+  phillCube.rotation.x -= 0.001;
+  phillCube.rotation.y -= 0.001;
   // controls.update();
 
   renderer.render(scene, camera);
