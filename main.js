@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import phillImg from './assets/me.jpeg'
 // import spaceImg from './assets/bg.png'
-// import earthImg from './assets/earth.jpg'
+import earthImg from './assets/earth.jpg'
 import marsImg from './assets/mars.jpg'
 
 // ! scene ========================
@@ -90,6 +90,15 @@ const mars = new THREE.Mesh(
 
 scene.add(mars)
 
+// ! earth sphere =========================
+const earthTexture = new THREE.TextureLoader().load(earthImg)
+
+const earth = new THREE.Mesh(
+  new THREE.SphereGeometry(30, 32, 32),
+  new THREE.MeshBasicMaterial({ map: earthTexture })
+)
+
+scene.add(earth)
 
 
 // ! position objects ======================
@@ -99,6 +108,8 @@ phillCube.position.x = 2;
 mars.position.z = 20;
 mars.position.x = -45;
 
+earth.position.z = 90;
+earth.position.x = 35;
 
 // ! camera movement on scroll =============
 const moveCamera = () => {
@@ -113,11 +124,11 @@ const moveCamera = () => {
   torus.position.y -= 0.1
 
 
-  phillCube.rotateY(0.01)
-  phillCube.rotateX(0.01)
-  phillCube.rotateZ(0.01)
+  phillCube.rotateY(0.001)
+  phillCube.rotateX(0.001)
+  phillCube.rotateZ(0.001)
 
-  camera.position.z = top * -0.01
+  camera.position.z = top * -0.05
   camera.position.x = top * -0.002
   camera.position.y = top * -0.002
 
@@ -135,7 +146,14 @@ function animate() {
   torus.rotation.y += 0.001;
   // torus.rotation.z += 0.0005;
 
-  mars.rotation.y += 0.0005;
+  mars.position.x -= 0.001;
+  earth.position.x += 0.001;
+
+  mars.position.y -= 0.001;
+  earth.position.z += 0.001;
+
+  mars.rotation.y += 0.001;
+  earth.rotation.y -= 0.001;
 
   phillCube.rotation.x -= 0.001;
   phillCube.rotation.y -= 0.001;

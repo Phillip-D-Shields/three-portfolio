@@ -3,6 +3,7 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
+  margin: 0;
 }
 
 :root {
@@ -23,15 +24,16 @@ main {
   width: 100%;
   margin: 0px auto;
   padding: 120px 0px;
-  
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  scroll-snap-type: y mandatory;
 }
+
+
 
 h1, h2, h3, blockquote {
   font-family: ubuntu, sans-serif;
   font-weight: 700;
   font-style: normal;
+  z-index: 10;
 }
 
 canvas {
@@ -40,39 +42,74 @@ canvas {
   left: 0;
 }
 
+nav {
+  position: fixed;
+  bottom: 1rem;
+  left: .075rem;
+  width: 75%;
+  z-index: 0;
+  display: fixed;
+}
+
+nav div {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+
+}
+
+.glow-link {
+  text-decoration: none;
+  color: rgb(3, 90, 0);
+  font-size: 3.05rem;
+}
+
+.glow {
+  font-size: 1.75rem;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 7.5s ease-in-out infinite alternate;
+  -moz-animation: glow 7.5s ease-in-out infinite alternate;
+  animation: glow 7.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow:  0 0 0px #00e60c; 
+  }
+  to {
+    text-shadow: 0 0 50px #00e60c8a;
+  }
+}
 
 
   header {
     background: var(--dark-bg);
-    grid-column: 2 / span 5;
     font-size: 2.5rem;
     padding: 2rem;
     margin-bottom: var(--spacing);
   }
 
   section {
-    grid-column: 2 / 8;
+    width: 100%;
     padding: 1rem;
     background: var(--dark-bg);
     font-size: 1.25rem;
     line-height: 1.5;
     margin-bottom: var(--spacing);
   }
-
-  blockquote {
-    margin: 0;
+  .debri {
+  min-height: 100vh;
+  margin: 0;
     padding: .5rem 0.75rem;
     grid-column: 2 / span 9;
     margin-bottom: var(--spacing);
+    scroll-snap-align: start;
   }
 
   blockquote p {
     color: black;
     background-color: white;
     font-size: 4rem;
-    
-  }
-
-  .left {
-    grid-column: 6 / 12;
   }
