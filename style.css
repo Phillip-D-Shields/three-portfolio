@@ -22,7 +22,7 @@ main {
   z-index: 99;
   position: absolute;
   width: 100%;
-  margin: 0px auto;
+  margin: 0;
   padding: 120px 0px;
   scroll-snap-type: y mandatory;
 }
