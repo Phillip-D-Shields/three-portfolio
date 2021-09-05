@@ -157,9 +157,10 @@ nav div {
     color: #0B659E;
     height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .portfolio h2 {
-    
     font-size: 6rem;
     padding-bottom: 8rem;
   }
@@ -181,7 +182,7 @@ nav div {
   }
 
   .gallery--img {
-   width: 100%;
+   width: 50%;
    height: auto;
   }
 
