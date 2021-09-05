@@ -5,80 +5,131 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>three js portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      defer
+      src="https://kit.fontawesome.com/91dbfff463.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <canvas id="bg"></canvas>
-
     <main>
-      <nav class="debri">
-        <div class="glow">
+      <nav>
+        <!-- <div class="glow">
+          <a href="!#" class="glow-link">about</a>
           <a href="!#" class="glow-link">link</a>
           <a href="!#" class="glow-link">link</a>
           <a href="!#" class="glow-link">link</a>
           <a href="!#" class="glow-link">link</a>
-          <a href="!#" class="glow-link">link</a>
-        </div>
+        </div> -->
       </nav>
 
       <div class="debri">
-        <header>
+        <header class="glow">
           <h1>Phillip Shields</h1>
-          <p>🚀 Noob All Star</p>
+          <p><i class="fas fa-user-astronaut"></i> Noob All Star</p>
+          <h4>three.js cv playground</h4>
+          <h4>🚧🚧🚧🚧🚧🚧 
+            <br />
+            under construction
+            <br /> 
+            🚧🚧🚧🚧🚧🚧</h4>
         </header>
       </div>
 
       <div class="debri">
-        <blockquote>
-          <p>three.js playground for portfolio dev</p>
+        <blockquote class="myStuffs">
+          <p>wheres i does my stuffs</p>
         </blockquote>
       </div>
 
-      <div class="debri">
-        <h2>📜 About me</h2>
+      <div class="debri about glow">
+        <h2>About</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          I am a digital representation of where phill is at as a 'dev'. It's
+          not much, but I am trying to push more code. I am into blockchain tech
+          and web dev (<em>mostly front end</em>)
         </p>
       </div>
 
       <div class="debri">
-          <h2>Portfolio</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+        <div class="portfolio">
+          <div class="portfolio--header">
+            <h2>Portfolio</h2>
+            <h3>
+              not my stuff, yet. just some filler. these penguin are way more
+              interesting anyways
+            </h3>
+          </div>
+          <div class="portfolio--gallery">
+            <figure>
+              <img
+                src="./assets/hetiheti.jpg"
+                alt="hetiheti time"
+                class="gallery--img"
+              />
+              <figcaption>
+                Photo by
+                <a
+                  href="https://unsplash.com/@goosegrease?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                  >Derek Oyen</a
+                >
+                on
+                <a
+                  href="https://unsplash.com/s/photos/penguin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                  >Unsplash</a
+                >
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="./assets/penguin.jpg"
+                alt="penguin time"
+                class="gallery--img"
+              />
+              <figcaption>
+                Photo by
+                <a
+                  href="https://unsplash.com/@goosegrease?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                  >Derek Oyen</a
+                >
+                on
+                <a
+                  href="https://unsplash.com/s/photos/penguin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                  >Unsplash</a
+                >
+              </figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
-
       <div class="debri">
         <blockquote>
           <p>
             Out beyond ideas of wrongdoing and rightdoing there is a field. I’ll
-            meet you there. When the soul lies down in that grass the world is
-            too full to talk about. <br />-Rumi
+            meet you there. <br />-Rumi
           </p>
         </blockquote>
       </div>
 
       <div class="debri">
-        <section class="light">
-          <h2>Contact</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </section>
+        <span class="contact--footer">
+          <div>
+            <a href="#sectionName" class="glow">
+              <i class="fab fa-github-square fa-5x"></i>
+            </a>
+            <a href="#sectionName" class="glow"
+              ><i class="fab fa-linkedin fa-5x "></i
+            ></a>
+            <a href="#sectionName" class="glow">
+              <i class="fas fa-user-astronaut fa-3x"></i>
+            </a>
+            <a href="#sectionName" class="glow">
+              <i class="fas fa-meteor fa-3x"></i>
+            </a>
+          </div>
+        </span>
       </div>
     </main>
 
